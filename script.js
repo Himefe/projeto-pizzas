@@ -99,7 +99,7 @@ const closeModal = () => {
   const divModal = document.querySelector('.pizzaWindowArea');
   divModal.style.opacity = 0;
   setTimeout(() => divModal.style.display = 'none', 200);
-
+  
 }
 
 const buttonCard = () => {
