@@ -51,12 +51,7 @@ pizzaJson.map((item, index) => {
     
     const pizzaInfoPrice = document.querySelector('.pizzaInfo--actualPrice');
     pizzaInfoPrice.innerText = item.price.toLocaleString("pt-br", {style: "currency" ,currency: "BRL" });
-
-}
-
-
-
-
+  }
   const clickerModal = cloneModels.querySelector('a');
   clickerModal.addEventListener('click', toClick);
 });
@@ -90,8 +85,8 @@ const qntMais = (event) => {
 const clickerQtmais = document.querySelector('.pizzaInfo--qtmais');
   clickerQtmais.addEventListener('click', qntMais);
 
-  const clickerQtMenos = document.querySelector('.pizzaInfo--qtmenos');
-  clickerQtMenos.addEventListener('click', qntMenos);
+const clickerQtMenos = document.querySelector('.pizzaInfo--qtmenos');
+clickerQtMenos.addEventListener('click', qntMenos);
   
   
 
@@ -99,13 +94,26 @@ const closeModal = () => {
   const divModal = document.querySelector('.pizzaWindowArea');
   divModal.style.opacity = 0;
   setTimeout(() => divModal.style.display = 'none', 200);
+}
+
+
+
+const changeSizes = (event) => {
+  event.preventDefault();
+  let keySize = event.target.closest('.pizzaInfo--size').getAttribute('data-key');
+  document.querySelector('.pizzaInfo--size.selected').classList.remove('selected');
+  event.currentTarget.classList.add('selected');
   
+
 }
 
-const buttonCard = () => {
-  console.log('PIZZA: '+modalKey)
-}
 
-document.querySelector('.pizzaInfo--addButton').addEventListener('click', buttonCard);
+
+
+
+// CALLBACKS DE EVENTOS
+document.querySelectorAll('.pizzaInfo--size').forEach((sizes) => {
+  sizes.addEventListener('click', changeSizes);
+})
 document.querySelector('.pizzaInfo--cancelButton').addEventListener('click', closeModal);
 document.querySelector('.pizzaInfo--cancelMobileButton').addEventListener('click', closeModal);
